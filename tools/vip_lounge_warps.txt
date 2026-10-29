@@ -1,0 +1,28 @@
+//============================================================
+// VIP Lounge - Acceso desde Prontera y warps internos (Plaza rotada 180°)
+//============================================================
+
+// Warp en Prontera (debajo de la plaza central) que lleva al sector 166, 247
+prontera,156,168,0	warp	warp_to_vip_lounge	2,2,vip_lounge,166,247
+
+// Portal de regreso a Prontera ubicado exactamente en 169, 247
+vip_lounge,169,247,0	warp	warp_vip_garden_prt	2,2,prontera,156,172
+
+// Warps internos originales del mapa:
+// Puerta de Jardines hacia el Interior (ahora en la fachada norte 126..128, 287)
+vip_lounge,127,287,0	warp	vip_w1-1	2,1,vip_lounge,151,118
+
+// Puerta del Vestíbulo Interior hacia los Jardines (llegada al sur de la nueva fachada 127, 284)
+vip_lounge,151,115,0	warp	vip_w1-2	2,1,vip_lounge,127,284
+
+// Interior a Sala 1 (Oeste)
+vip_lounge,135,129,0	warp	vip_w2-1	1,1,vip_lounge,89,129
+vip_lounge,92,129,0	warp	vip_w2-2	1,1,vip_lounge,137,129
+
+// Interior a Sala 2 (Sur)
+vip_lounge,151,140,0	warp	vip_w3-1	1,1,vip_lounge,153,68
+vip_lounge,153,72,0	warp	vip_w3-2	1,1,vip_lounge,151,137
+
+// Interior a Sala 3 (Este)
+vip_lounge,168,129,0	warp	vip_w4-1	1,1,vip_lounge,196,130
+vip_lounge,193,130,0	warp	vip_w4-2	1,1,vip_lounge,166,129

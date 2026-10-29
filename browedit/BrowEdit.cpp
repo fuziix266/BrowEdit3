@@ -28,6 +28,7 @@
 #include <browedit/components/RsmRenderer.h>
 #include <browedit/components/LubSkyMap.h>
 #include <browedit/util/FileIO.h>
+#include <browedit/IpcServer.h>
 #include <browedit/util/Util.h>
 #include <browedit/util/Console.h>
 #include <browedit/util/ResourceManager.h>
@@ -184,14 +185,14 @@ void BrowEdit::run()
 //		loadMap("data\\maze_new.rsw");
 
 		//loadModel("data\\model\\prontera_re\\streetlamp_01.rsm");
-	//	loadModel("data\\model\\Å©¸®½º¸¶½º¸¶À»\\xmas_³»ºÎÆ®¸®.rsm");
-	//	loadModel("data\\model\\ÀÎ´ø02\\ÀÎ´ø02bÁß¾ÓÀå½Ä01.rsm");
-		//loadModel("data\\model\\event\\3Â÷ÀüÁ÷_¼®»ó02.rsm"); //bigass statue
+	//	loadModel("data\\model\\í¬ë¦¬ìŠ¤ë§ˆìŠ¤ë§ˆì„\\xmas_ë‚´ë¶€íŠ¸ë¦¬.rsm");
+	//	loadModel("data\\model\\ì¸ë˜02\\ì¸ë˜02bì¤‘ì•™ì¥ì‹01.rsm");
+		//loadModel("data\\model\\event\\3ì°¨ì „ì§_ì„ìƒ02.rsm"); //bigass statue
 		//loadModel("data\\model\\para\\alchemy_01.rsm");
 		//loadModel("data\\model\\para\\mora_01.rsm");
 		//loadModel("data\\model\\para\\mora_02.rsm");
 		//loadModel("data\\model\\masin\\fire_land.rsm");
-		//loadModel("data\\modelÀÎ´ø02ÀÎ´ø02¹ÌÀÌ¶ó.rsm");
+		//loadModel("data\\modelì¸ë˜02ì¸ë˜02ë¯¸ì´ë¼.rsm");
 		//loadModel("data\\model\\pud\\stall_01.rsm");
 		//loadModel("data\\model\\pud\\stall_02.rsm");
 		//loadModel("data\\model\\pud\\stall_03.rsm");
@@ -199,11 +200,12 @@ void BrowEdit::run()
 		//loadModel("data\\model\\pud\\balloon_01.rsm");
 		//loadModel("data\\model\\plants_e_01.rsm2");
 	//	modelEditor.load("data\\model\\para\\mora_01.rsm");
-		//modelEditor.load("data\\model\\ÇÁ·ĞÅ×¶ó\\±³¿ª¼Ò.rsm");
+		//modelEditor.load("data\\model\\í”„ë¡ í…Œë¼\\êµì—­ì†Œ.rsm");
 		//modelEditor.load("data\\model\\ilusion\\goldberg_s_01.rsm2");
 		//modelEditor.load("data\\model\\job4for\\purifier_s_01.rsm2");
 #endif
 
+	IpcServer::instance().start(38200);
 
 	double time = ImGui::GetTime();
 	while (true)
@@ -211,6 +213,18 @@ void BrowEdit::run()
 		if (!glfwLoopBegin())
 			break;
 		imguiLoopBegin();
+		try
+		{
+			IpcServer::instance().processRequests(this);
+		}
+		catch (const std::exception& e)
+		{
+			std::cerr << "[IpcServer] Uncaught exception in main loop: " << e.what() << std::endl;
+		}
+		catch (...)
+		{
+			std::cerr << "[IpcServer] Uncaught unknown exception in main loop." << std::endl;
+		}
 
 		if (cursor != nullptr)
 		{
@@ -456,6 +470,7 @@ void BrowEdit::run()
 	NodeRenderer::end();
 	imguiEnd();
 	glfwEnd();
+	IpcServer::instance().stop();
 }
 
 void BrowEdit::configBegin()

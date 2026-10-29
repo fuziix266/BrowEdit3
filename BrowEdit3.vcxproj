@@ -38,6 +38,7 @@
     <ClCompile Include="browedit\actions\WaterHeightChangeAction.cpp" />
     <ClCompile Include="browedit\actions\WaterSplitChangeAction.cpp" />
     <ClCompile Include="browedit\BrowEdit.cpp" />
+    <ClCompile Include="browedit\IpcServer.cpp" />
     <ClCompile Include="browedit\BrowEdit.glfw.cpp" />
     <ClCompile Include="browedit\BrowEdit.imgui.cpp" />
     <ClCompile Include="browedit\BVH.cpp" />
@@ -217,6 +218,7 @@
     <ClInclude Include="browedit\actions\WaterHeightChangeAction.h" />
     <ClInclude Include="browedit\actions\WaterSplitChangeAction.h" />
     <ClInclude Include="browedit\BrowEdit.h" />
+    <ClInclude Include="browedit\IpcServer.h" />
     <ClInclude Include="browedit\BVH.h" />
     <ClInclude Include="browedit\components\BillboardRenderer.h" />
     <ClInclude Include="browedit\components\Collider.h" />
@@ -536,7 +538,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;VC_EXTRALEAN;NOMINMAX;GRF_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;VC_EXTRALEAN;NOMINMAX;GRF_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>lib/imgui/;lib/glfw-3.3.8/include;lib/grflib;lib/zlib;lib/sfl;lib/glm;lib/glad/include;lib/lzma;$(SolutionDir);lib/bugtrap;lib/magic_enum/include;lib/imGuIZMO.quat/imGuIZMO.quat;lib/lua;lib/sol</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -548,7 +550,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>lib/glfw-3.3.8/lib;lib/bugtrap</AdditionalLibraryDirectories>
-      <AdditionalDependencies>winmm.lib;opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;opengl32.lib;glfw3.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
@@ -562,7 +564,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;VC_EXTRALEAN;NOMINMAX;GRF_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;VC_EXTRALEAN;NOMINMAX;GRF_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>lib/imgui/;lib/glfw-3.3.8/include;lib/grflib;lib/zlib;lib/sfl;lib/glm;lib/glad/include;lib/lzma;$(SolutionDir);lib/bugtrap;lib/magic_enum/include;lib/imGuIZMO.quat/imGuIZMO.quat;lib/lua;lib/sol</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -577,7 +579,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>lib/glfw-3.3.8/lib;lib/bugtrap</AdditionalLibraryDirectories>
-      <AdditionalDependencies>winmm.lib;opengl32.lib;glfw3_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;opengl32.lib;glfw3_mt.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>

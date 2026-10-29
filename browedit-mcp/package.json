@@ -1,0 +1,22 @@
+{
+  "name": "browedit-mcp",
+  "version": "1.0.0",
+  "description": "Model Context Protocol (MCP) Server for BrowEdit3 Ragnarok Online Map Editor",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "browedit-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.4"
+  }
+}
